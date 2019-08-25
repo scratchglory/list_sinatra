@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     erb :welcome
+    # erb :index
   end
 
   # Render the sign-up form view
@@ -18,13 +19,7 @@ class ApplicationController < Sinatra::Base
   # Handle the POST request that is sent when a user hits 'submit' on the sign-up form
   # after submitting, it will redirect
   post '/registrations' do
-    @user =
-      User.new(
-        name: params['name'],
-        email: params['email'],
-        password: params['password']
-      )
-    @user.save
+    @user = User.create(params)
     session[:user_id] = @user.id
 
     redirect '/users/home'
@@ -35,10 +30,10 @@ class ApplicationController < Sinatra::Base
     erb :'sessions/login'
   end
 
-  # Receive the POST request that gets sent when a user hits 'submit' on the login form
+  # Receive the POST request that gets sent when a user hits 'log in' on the login form
   post '/sessions' do
     @user = User.find_by(email: params[:email], password: params[:password])
-    if @user
+    if @user.save
       session[:user_id] = @user.id
       redirect '/users/home'
     end
@@ -57,6 +52,7 @@ class ApplicationController < Sinatra::Base
     erb :'/users/home'
   end
 
-  get '/users' do
-  end
-end
+
+
+
+end # end of Class
