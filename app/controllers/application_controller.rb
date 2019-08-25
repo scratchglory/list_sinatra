@@ -49,10 +49,27 @@ class ApplicationController < Sinatra::Base
   # Render the user's homepage view
   get '/users/home' do
     @user = User.find(session[:user_id])
-    erb :'/users/home'
+    erb :'users/home'
   end
 
+  # To read all items
+  get '/items/all' do
+    # @list = Item.all
+    erb :'items/index'
+  end
 
+  # creating a new item
+  get '/item/new' do
+    erb :'list/new'
+  end
+
+  # To show individual item
+  get '/items/:name' do
+    @item = Item.find(params[:name])
+    
+    erb :'items/show'
+    # binding.pry
+  end
 
 
 end # end of Class

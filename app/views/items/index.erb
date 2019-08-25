@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+<head>
+<title>List Page</title>
+</head>
+
+
+<h1>Your Grocery List</h1>
+
+<% @item.each do |item| %>
+    <li><%= item.name %></li>
+    Quantity: <%= item.quatity %>
+</html>
