@@ -53,13 +53,13 @@ class ApplicationController < Sinatra::Base
   end
 
   # To read all items
-  get '/items/all' do
+  get '/items' do
     # @list = Item.all
     erb :'items/index'
   end
 
   # creating a new item
-  get '/item/new' do
+  get '/items/new' do
     erb :'list/new'
   end
 
