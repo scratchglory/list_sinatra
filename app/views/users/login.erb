@@ -1,2 +1,23 @@
 <%# # renders and sends a POST request that is handled by the post '/sessions' %>
-<h1>Log In</h1>
+<!doctype html>
+<html>
+<head>
+<title>Sign Up</title>
+</head>
+<div id='login'>
+<h1>Sign Up Below</h1>
+<form action='/users/login' method='POST'>
+<p>   
+    <label for='usernamelogin'>Username:</label>
+        <input type='text' name='usernamelogin' required='required' placeholder='coolfunkyname1739'>
+</p>
+<p>
+    <label for='passwordlogin'>Password:</label>
+        <input type='password' name='passwordlogin' required='required' placeholder='Ft2!*wP?v'>
+</p>
+
+
+<input type='submit' value='Log In'>
+</div>
+
+</html>

@@ -4,6 +4,8 @@ class ApplicationController < Sinatra::Base
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
+    enable :sessions
+    set :session_secret, 'configure_this'
   end
 
   get '/' do
@@ -12,13 +14,13 @@ class ApplicationController < Sinatra::Base
   end
 
   # Render the sign-up form view
-  get '/signup' do
+  get '/users/signup' do
     erb :'/users/signup'
   end
 
   # Handle the POST request that is sent when a user hits 'submit' on the sign-up form
   # after submitting, it will redirect
-  post '/users' do
+  post '/signup' do
     @user = User.create(params)
     session[:user_id] = @user.id
 
@@ -26,12 +28,12 @@ class ApplicationController < Sinatra::Base
   end
 
   # Render login form
-  get '/login' do
+  get '/users/login' do
     erb :'users/login'
   end
 
   # Receive the POST request that gets sent when a user hits 'log in' on the login form
-  post '/users' do
+  post '/login' do
     @user = User.find_by(email: params[:email], password: params[:password])
     if @user.save
       session[:user_id] = @user.id
