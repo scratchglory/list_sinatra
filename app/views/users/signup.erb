@@ -7,21 +7,21 @@
 </head>
 <div id='signup'>
 <h1>Sign Up Below</h1>
-<form action='/users/login'>
+<form action='/users' method='POST'>
 <p>   
-    <label for='usernamesignup'>Username:</label>
-        <input type='text' name='usernamesignup' required='required' placeholder='coolfunkyname1739'>
+    <label for='username'>Username:</label>
+        <input type='text' name='username' required='required' placeholder='coolfunkyname1739'>
 </p>
 <p>
-    <label for='emailsignup'>Email:</label>
-        <input type='email' name='usernamesignup' required='required' placeholder='mail@mail.com'>
+    <label for='email'>Email:</label>
+        <input type='email' name='email' required='required' placeholder='mail@mail.com'>
 </p>
 <p>
-    <label for='passwordsignup'>Password:</label>
-        <input type='password' name='passwordsignup' required='required' placeholder='Ft2!*wP?v'>
+    <label for='password'>Password:</label>
+        <input type='password' name='password' required='required' placeholder='Ft2!*wP?v'>
 </p>
 
-<li>After you create your account, you will be prompted to log in</li>
+<%# #have it auto sign in after setting up account %>
 <input type='submit' value='Create Account'>
 </div>
 

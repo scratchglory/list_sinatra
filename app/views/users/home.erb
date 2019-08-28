@@ -2,4 +2,25 @@
 # rendered by the get '/user/home'
  %>
 
- 
+<%# # CRUD options (add to list, edit list) %>
+
+ <!doctype html>
+<html>
+<head>
+<title>Home</title>
+</head>
+
+"Welcome, <%=@user.username%>!"
+
+<h1>Your Grocery List</h1>
+<%# # Grocery list goes here %>
+
+
+<div class='crud'>
+<a href='/items/new'>Add to the list</a>
+<a href='/items/edit'>Update an item</a>
+
+</div>
+
+
+</html>

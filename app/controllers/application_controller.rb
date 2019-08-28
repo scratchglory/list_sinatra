@@ -5,7 +5,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, 'configure_this'
+    set :session_secret, 'this_secret'
   end
 
   get '/' do
@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
 
   # Handle the POST request that is sent when a user hits 'submit' on the sign-up form
   # after submitting, it will redirect
-  post '/signup' do
+  post '/users' do
     @user = User.create(params)
     session[:user_id] = @user.id
 
@@ -42,34 +42,34 @@ class ApplicationController < Sinatra::Base
     redirect '/user/login'
   end
 
-  # Logging the user out by clearing the session hash
-  get '/sessions/logout' do
-    session.clear
-    redirect '/'
-  end
-
   # Render the user's homepage view
   get '/users/home' do
     @user = User.find(session[:user_id])
     erb :'users/home'
   end
 
-  # To read all items
-  get '/items' do
-    # @list = Item.all
-    erb :'items/index'
+  # Logging the user out by clearing the session hash
+  get '/sessions/logout' do
+    session.clear
+    redirect '/'
   end
 
-  # creating a new item
-  get '/items/new' do
-    erb :'list/new'
-  end
+  #   # To read all items
+  #   get '/items' do
+  #     # @list = Item.all
+  #     erb :'items/index'
+  #   end
 
-  # To show individual item
-  get '/items/:name' do
-    @item = Item.find(params[:name])
+  #   # creating a new item
+  #   get '/items/new' do
+  #     erb :'list/new'
+  #   end
 
-    erb :'items/show'
-    # binding.pry
-  end
+  #   # To show individual item
+  #   get '/items/:name' do
+  #     @item = Item.find(params[:name])
+
+  #     erb :'items/show'
+  #     # binding.pry
+  #   end
 end # end of Class
