@@ -95,4 +95,12 @@ class ApplicationController < Sinatra::Base
     @item.update(name: params[:name], quantity: params[:quantity])
     redirect "/items/#{@item.id}"
   end
+
+  # Delete an item
+  delete '/items/:id' do
+    @item = Item.find(params[:id])
+    @item.destroy
+
+    redirect '/users/home'
+  end
 end # end of Class

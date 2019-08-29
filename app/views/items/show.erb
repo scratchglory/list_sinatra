@@ -11,3 +11,10 @@
 
 <p><a href='/users/home'>Click here</a> to return to the home page</p>
 <p><a href='/items/<%=@item.id%>/edit'>Click here</a> to make an edit</p>
+
+<h2>If you want to delete an item, click on button below</h2>
+<form action='/items/<%=@item.id%>' method='POST'>
+<p>
+<input type="hidden" name="_method" value="DELETE">
+<input type='submit' value='DELETE this item'>
+</form>
