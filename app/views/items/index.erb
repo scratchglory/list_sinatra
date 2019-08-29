@@ -6,3 +6,13 @@
 
 
 <h1>Your Grocery List & Make edits</h1>
+<%@items.each do  |item|%>
+<ul>
+    <li>Name: <%= item.name%></li>
+        </ul>    
+<ul>
+    <li>Quantity: <%= item.quantity%></li>
+</ul>
+<%end%>
+
+<p><a href='/users/home'>Click here</a> to go home</p>

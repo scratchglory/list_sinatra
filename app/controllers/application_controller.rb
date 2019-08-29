@@ -59,6 +59,8 @@ class ApplicationController < Sinatra::Base
 
   # To read all items
   get '/items' do
+    # binding.pry
+    @items = Item.where(user_id: session[:user_id])
     erb :'items/index'
   end
 
@@ -71,8 +73,9 @@ class ApplicationController < Sinatra::Base
   post '/items' do
     # binding.pry
     @item = Item.create(params)
-    session[:item] = @item.name
-    @session = session
+    @item.user_id = session[:user_id]
+    # Needs to be saved for user_id
+    @item.save
     redirect "/items/#{@item.id}"
   end
 
