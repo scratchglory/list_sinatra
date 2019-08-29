@@ -6,7 +6,7 @@
 
 
 <h1>What you added to the list (show page)</h1>
-<%=@item.name%> with a quantity of <%=@item.quantity%> has been added to your list
+<p><%=@item.name%> with a quantity of <%=@item.quantity%> has been added to your list</p>
 
 
 <p><a href='/users/home'>Click here</a> to return to the home page</p>
@@ -14,7 +14,6 @@
 
 <h2>If you want to delete an item, click on button below</h2>
 <form action='/items/<%=@item.id%>' method='POST'>
-<p>
 <input type="hidden" name="_method" value="DELETE">
 <input type='submit' value='DELETE this item'>
 </form>

@@ -7,4 +7,6 @@ end
 # Must be placed above all controllers
 # to use PATCH, PUT, DELETE requests
 use Rack::MethodOverride
+use UsersController
+use ItemsController
 run ApplicationController
