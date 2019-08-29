@@ -10,17 +10,18 @@
 <title>Home</title>
 </head>
 
+<p id='home'>
 "Welcome, <%=@user.username%>!"
+</p>
 
 <h1>Your Grocery List</h1>
 <%# # Grocery list goes here %>
 
-
 <div class='crud'>
-<a href='/items/new'>Add to the list</a>
-<a href='/items/edit'>Update an item</a>
-
+<ul>
+    <li><a href='/items/new'>Add to the list</a></li>
+    <li><a href='/items/edit'>Update List</a></li>
+    <li><a href='/logout'>Log Out</a></li>
+</ul>
 </div>
-
-
 </html>

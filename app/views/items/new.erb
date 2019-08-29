@@ -1,10 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<title>Add to List</title>
+</head>
 <h1>Add to your list!</h1>
 
 <form action='/items' method='POST'>
-    <label for='name'>Name</label>
-        <input type='text' placeholder='Enter Name' name='name'>
+<p>
+    <label for='name'>Item:</label>
+        <input type='text' placeholder='Text Only' name='name'><br>
     <label for='quantity'>Quantity:</label>
-        <input type='text' placeholder='Enter Quantity' name='name'>
-
+        <input type='number' placeholder='Numbers Only' name='quantity'><br>
+</p>
     <input type='submit' value='Add to List'>
+    <input type="reset">
 </form>
+
+</html>

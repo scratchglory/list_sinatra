@@ -6,8 +6,9 @@
 
 
 <h1>Your Grocery List</h1>
-
-<% @item.each do |item| %>
-    Name: <li><%= item.name %></li>
+<%binding.pry%>
+<% @items.each do |item| %>
+    Name: <%= item.name %>
     Quantity: <%= item.quatity %>
+    <%end%>
 </html>
