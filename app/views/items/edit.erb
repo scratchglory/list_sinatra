@@ -1,0 +1,13 @@
+<h1>Edit Your Item</h1>
+
+<form action='/items/<%=@item.id%>' method='POST'>
+<p>
+<input type="hidden" name="_method" value="PATCH">
+    <label for='name'>Item:</label>
+        <input type='text' name='name' value='<%=@item.name%>'><br>
+    <label for='quantity'>Quantity:</label>
+        <input type='number' name='quantity' value='<%=@item.quantity%>'><br>
+</p>
+    <input type='submit' value='Change Item Info'>
+    <input type="reset">
+</form>
