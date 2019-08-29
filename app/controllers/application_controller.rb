@@ -46,7 +46,7 @@ class ApplicationController < Sinatra::Base
   # Render the user's homepage view
   get '/users/home' do
     # binding.pry
-    @items = Item.all
+    @items = Item.where(user_id: session[:user_id])
     @user = User.find(session[:user_id])
     erb :'users/home'
   end
@@ -59,7 +59,6 @@ class ApplicationController < Sinatra::Base
 
   # To read all items
   get '/items' do
-    # binding.pry
     @items = Item.where(user_id: session[:user_id])
     erb :'items/index'
   end
@@ -71,7 +70,6 @@ class ApplicationController < Sinatra::Base
 
   # Read the list, job not to display to user (only do something)
   post '/items' do
-    # binding.pry
     @item = Item.create(params)
     @item.user_id = session[:user_id]
     # Needs to be saved for user_id
@@ -80,14 +78,17 @@ class ApplicationController < Sinatra::Base
   end
 
   # To show individual item
-  get '/items/:name' do
-    # binding.pry
-    @item = Item.find(params[:name])
+  get '/items/:id' do
+    @item = Item.find(params[:id])
     erb :'items/show'
   end
 
+  get '/items/edit' do
+    @items = Item.where(user_id: session[:user_id])
+    erb :'items/list'
+  end
+
   get '/items/:id/edit' do
-    # binding.pry
     @item = Item.find(params[:id])
     erb :'items/edit'
   end
@@ -106,4 +107,6 @@ class ApplicationController < Sinatra::Base
 
     redirect '/users/home'
   end
+
+
 end # end of Class

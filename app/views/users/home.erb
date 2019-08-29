@@ -11,18 +11,23 @@
 </head>
 
 <p id='home'>
-"Welcome, <%=@user.username%>!"
+<h1>"Welcome, <%=@user.username%>!"</h1>
 </p>
 
-<h1>Your Grocery List</h1>
+
+<h2>Your Grocery List</h2>
 <%# # Grocery list goes here %>
-
-
+<ol>
+<%@items.each do  |item|%>
+    <li>Name: <%= item.name%>
+    Quantity: <%= item.quantity%>
+    <a href='/items/<%=item.id%>/edit'>Click here to edit</a></li><br>
+<%end%>
+</ol>
 
 <div class='crud'>
 <ul>
     <li><a href='/items/new'>Add to the list</a></li>
-    <li><a href='/items/edit'>Update List</a></li>
     <li><a href='/logout'>Log Out</a></li>
 </ul>
 </div>
